@@ -27,6 +27,11 @@ urlpatterns = [
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     url(r'^dj-rest-auth/registration/account-confirm-email/(?P<key>.+)/$', confirm_email, name='account_confirm_email'),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+    path("api/",include("ProductDetail.api.urls")),
+    path("chat/",include("realtime_list.urls")),
+    path("message/",include("realtime_list.api.urls")),
+
+
 ]
 
 

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View,Button } from 'react-native';
 
 import { Provider as PaperProvider ,
@@ -24,7 +24,8 @@ import ProfileScreen from './src/screens/Profile';
 //component imports
 import AppBar from './src/components/AppBar';
 
-import { navigationRef } from './src/RootNavigation';
+import { navigationRef,navigate } from './src/RootNavigation';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -40,6 +41,14 @@ const CombinedDefaultTheme = {
 
 
 export default function App() {
+
+useEffect(() => {
+    if(AsyncStorage.getItem('auth_token')){
+      navigate('MainApp',{screen:"Home"});
+    }
+ 
+}, [])
+
 const Drawer=createDrawerNavigator();
 const Stack=createStackNavigator();
 

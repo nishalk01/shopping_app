@@ -47,8 +47,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth',
     'dj_rest_auth.registration',
+    'channels',
     #custom apps
-    'accounts'
+    'accounts',
+    'ProductDetail',
+    'realtime_list'
 ]
 
 MIDDLEWARE = [
@@ -82,6 +85,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'shopping_backend.wsgi.application'
 
+ASGI_APPLICATION = "shopping_backend.asgi.application"
+redis_ip="192.168.0.108"
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             "hosts": [(redis_ip, 6379)],
+#         },
+#     },
+# }
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
+        "CONFIG": {
+            "host": "amqp://guest:guest@127.0.0.1/",
+            # "ssl_context": ... (optional)
+        },
+    },
+}
+
 
 
 AUTHENTICATION_BACKENDS = [
@@ -97,6 +122,7 @@ SITE_ID = 1
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
       
