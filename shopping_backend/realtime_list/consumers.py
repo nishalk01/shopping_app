@@ -3,10 +3,7 @@ from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 import pika, os
 
-# Access the CLODUAMQP_URL environment variable and parse it (fallback to localhost)
-# CLOUDAMQP_URL="amqps://nzewafsn:BhHUtyCHnSVgFrJOY3nRZLlWWqt6EB6f@orangutan.rmq.cloudamqp.com/nzewafsn"
-# url = os.environ.get(CLOUDAMQP_URL, 'amqp://guest:guest@localhost:5672/%2f')
-# params = pika.URLParameters(url)
+
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
