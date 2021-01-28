@@ -5,10 +5,6 @@ from rest_framework import status
 import pika
 import os
 
-# CLOUDAMQP_URL="amqps://nzewafsn:BhHUtyCHnSVgFrJOY3nRZLlWWqt6EB6f@orangutan.rmq.cloudamqp.com/nzewafsn"
-# url = os.environ.get(CLOUDAMQP_URL, 'amqp://guest:guest@localhost:5672/%2f')
-# params = pika.URLParameters(url)
-
 
 @api_view(['POST',])
 # @permission_classes([IsAuthenticated]) 
